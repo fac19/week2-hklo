@@ -4,6 +4,12 @@
     --opaquebackground: hsla(0, 0%, 100%, .8);
     --logo: hsl(175, 71%, 41%); 
 }
+
+/* 
+font-family: 'Work Sans', sans-serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'PT Sans Narrow', sans-serif; */
+
 * {
   box-sizing: border-box;
 }
@@ -12,6 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: 'PT Sans Narrow', sans-serif;
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -25,13 +32,14 @@ body {
 }
 
 .header__title {
+  font-family: 'PT Sans', sans-serif;
   text-transform: uppercase;
   margin: 1rem 1rem 1rem 2rem;
   color: var(--logo);
 }
 
 .header__text {
-  margin: 1rem 2rem 1rem 1rem;
+  margin: 1rem 1rem 1rem 2rem;
   text-align: right;
 }
 
@@ -41,7 +49,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .board {
@@ -54,15 +62,16 @@ body {
     grid-template-areas: 
     "one two"
     "three four";
-  justify-items: center;
-  height: 70%;
+    justify-items: center;
+    height: 70%;
 }
 
 .fig {
     display: flex;
     margin: 0;
-    width: 70%;
+    width: 100%;
     justify-content: center;
+
 }
 
 .board__caption {
@@ -110,21 +119,43 @@ body {
 }
 
 .movie__title {
-  background-color: aquamarine;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   height: 10rem;
   width: 10rem;
+  text-align: center;
+  line-height: 8rem;
+  z-index: -2;
+
+}
+
+.movie__title__overlay{
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  padding: 1rem;
+  z-index: -1;
+}
+
+.movie__title--text{
+  font-family: 'PT Sans', sans-serif;
+  font-size: 2rem;
+  color: hsla(0, 0%, 100%);
 }
 
 .movie__button {
-  margin: 1rem;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.movie__button {
-    background-color: var(--accentcolor);
-    padding: .5rem;
-    border: 0;
-    border-radius: 5px;
+  margin-top: 1rem;
+  box-shadow: .4rem .3rem .9rem rgba(0, 0, 0, 0.3);
+  background-color: var(--accentcolor);
+  padding: 1rem 2rem;
+  border: 0;
+  text-transform: uppercase;
+  border-radius: .2rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .footer{
@@ -142,4 +173,5 @@ body {
         grid-template-areas: 
         "one two three four";
     }
+
 }

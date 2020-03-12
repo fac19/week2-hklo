@@ -10,6 +10,10 @@ const boardCapOne = document.querySelector(".board__caption--one");
 const boardCapTwo = document.querySelector(".board__caption--two");
 const boardCapThree = document.querySelector(".board__caption--three");
 const boardCapFour = document.querySelector(".board__caption--four");
+const gifText = document.querySelector(".movie__title--text");
+const gifOverlay = document.querySelector(".movie__title__overlay");
+
+
 
 // API URL's
 let movieDB_URL = "https://api.themoviedb.org/3/movie/";
@@ -24,6 +28,10 @@ let giphy_key = "lbwQZXxYMqPh2DpvV8nXbGlqHNm8kJ9h";
 
 let answerIndex;
 
+gifText.textContent = "";
+
+gifOverlay.style.display ="none";
+
 function generateRandomNumber(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -37,6 +45,10 @@ let idArray = [];
 async function generateMovies() {
   movieArray = [];
   idArray = [];
+  gifText.textContent = "";
+  gifOverlay.style.opacity = "0";
+
+
   // fetch movies until array has 4 objects
   while (movieArray.length < 4) {
     let movieObj = {};
@@ -117,9 +129,16 @@ figs.forEach(fig => {
   fig.onclick = function() {
     console.log(answerIndex);
     if (fig.dataset.index == answerIndex) {
-      document.querySelector(".movie__title").style.background = `green`;
+      gifOverlay.style.display = "block";
+      gifOverlay.style.backgroundColor = "hsl(129, 100%, 70%)";
+      gifOverlay.style.opacity = "0.5";
+      document.querySelector(".movie__title--text").textContent = "Correct!";
+
     } else {
-      document.querySelector(".movie__title").style.background = `red`;
+      gifOverlay.style.display = "block";
+      gifOverlay.style.backgroundColor = "hsl(13, 100%, 70%)";
+      gifOverlay.style.opacity = "0.5";
+      document.querySelector(".movie__title--text").textContent = "Incorrect!";
     }
   };
 });

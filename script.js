@@ -2,7 +2,6 @@
 let movieDB_URL = "https://api.themoviedb.org/3/movie/";
 // hide an API key
 let movieDB_key = config.movieDB_key;
-
 // create a random number between 100-500 to limit database results ( arbitrarily )
 
 function generateRandomNumber() {
@@ -49,7 +48,15 @@ async function generateMovies() {
     }
   }
 
-  console.log(movieArray);
-}
+    document.querySelector(".board__figure--one").style.backgroundImage = `url(${movieArray[0].img})`;
+    document.querySelector(".board__figure--two").style.backgroundImage = `url(${movieArray[1].img})`;
+    document.querySelector(".board__figure--three").style.backgroundImage = `url(${movieArray[2].img})`;
+    document.querySelector(".board__figure--four").style.backgroundImage = `url(${movieArray[3].img})`;
+    document.querySelector(".board__caption--one").textContent = movieArray[0].title.toString();
+    document.querySelector(".board__caption--two").textContent = movieArray[1].title.toString();
+    document.querySelector(".board__caption--three").textContent = movieArray[2].title.toString();
+    document.querySelector(".board__caption--four").textContent = movieArray[3].title.toString();
+
+ }
 
 generateMovies();

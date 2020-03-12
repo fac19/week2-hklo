@@ -1,3 +1,16 @@
+// global variables
+
+const figs = document.querySelectorAll(".fig");
+const button = document.querySelector(".movie__button");
+const figOne = document.querySelector(".board__figure--one");
+const figTwo = document.querySelector(".board__figure--two");
+const figThree = document.querySelector(".board__figure--three");
+const figFour = document.querySelector(".board__figure--four");
+const boardCapOne = document.querySelector(".board__caption--one");
+const boardCapTwo = document.querySelector(".board__caption--two");
+const boardCapThree = document.querySelector(".board__caption--three");
+const boardCapFour = document.querySelector(".board__caption--four");
+
 // API URL's
 let movieDB_URL = "https://api.themoviedb.org/3/movie/";
 let giphy_URL = "https://api.giphy.com/v1/gifs/search?api_key=";
@@ -5,9 +18,11 @@ let giphy_URL = "https://api.giphy.com/v1/gifs/search?api_key=";
 // lbwQZXxYMqPh2DpvV8nXbGlqHNm8kJ9h&q=basic-instinct&limit=1&offset=0&rating=G&lang=en
 
 // hide an API key
-let movieDB_key = config.movieDB_key;
-let giphy_key = config.giphy_key;
+let movieDB_key = "?api_key=bedab68d23f1d5afb18624ada51a697e";
+let giphy_key = "lbwQZXxYMqPh2DpvV8nXbGlqHNm8kJ9h";
 // create a random number between 100-500 to limit database results ( arbitrarily )
+
+let answerIndex;
 
 function generateRandomNumber(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -20,6 +35,8 @@ let idArray = [];
 // generate 4 random movie objects and push the into an array
 
 async function generateMovies() {
+  movieArray = [];
+  idArray = [];
   // fetch movies until array has 4 objects
   while (movieArray.length < 4) {
     let movieObj = {};
@@ -53,36 +70,22 @@ async function generateMovies() {
       alert("Something's gone wrong, please try again");
     }
   }
-  document.querySelector(
-    ".board__figure--one"
-  ).style.backgroundImage = `url(${movieArray[0].img})`;
-  document.querySelector(
-    ".board__figure--two"
-  ).style.backgroundImage = `url(${movieArray[1].img})`;
-  document.querySelector(
-    ".board__figure--three"
-  ).style.backgroundImage = `url(${movieArray[2].img})`;
-  document.querySelector(
-    ".board__figure--four"
-  ).style.backgroundImage = `url(${movieArray[3].img})`;
-  document.querySelector(
-    ".board__caption--one"
-  ).textContent = movieArray[0].title.toString();
-  document.querySelector(
-    ".board__caption--two"
-  ).textContent = movieArray[1].title.toString();
-  document.querySelector(
-    ".board__caption--three"
-  ).textContent = movieArray[2].title.toString();
-  document.querySelector(
-    ".board__caption--four"
-  ).textContent = movieArray[3].title.toString();
+  figOne.style.backgroundImage = `url(${movieArray[0].img})`;
+  figTwo.style.backgroundImage = `url(${movieArray[1].img})`;
+  figThree.style.backgroundImage = `url(${movieArray[2].img})`;
+  figFour.style.backgroundImage = `url(${movieArray[3].img})`;
+  boardCapOne.textContent = movieArray[0].title.toString();
+  boardCapTwo.textContent = movieArray[1].title.toString();
+  boardCapThree.textContent = movieArray[2].title.toString();
+  boardCapFour.textContent = movieArray[3].title.toString();
 }
+
 // choose random movie from the array and replace white spaces in the title with hyphen
-function moviePicker() {
+function gifURLgenerator() {
   let randomIndex = generateRandomNumber(3, 0);
   let movieTitle = movieArray[randomIndex].title;
 
+  answerIndex = randomIndex;
   movieTitle = movieTitle.replace(/[.,\/#!$%\^&\*;:{}=\_`~(),\s ]/g, " ");
   movieTitle = movieTitle.replace(/ /g, "-").toLowerCase();
 
@@ -94,20 +97,35 @@ function moviePicker() {
 
 async function generateGif() {
   // fetch gif with a specic title
-  let requestURL = moviePicker();
-
+  let requestURL = gifURLgenerator();
+  let gifURL;
   try {
     // fetch movie using generated url
     let response = await fetch(requestURL);
     let gif = await response.json();
-    let gifURL = gif.data[0].images.downsized_large.url;
+    gifURL = gif.data[0].images.downsized_large.url;
   } catch (err) {
     // catches errors both in fetch and response.json
     alert("Something's gone wrong, please try again");
   }
-
-  return gifURL;
+  document.querySelector(
+    ".movie__title"
+  ).style.backgroundImage = `url(${gifURL})`;
 }
 
+figs.forEach(fig => {
+  fig.onclick = function() {
+    console.log(answerIndex);
+    if (fig.dataset.index == answerIndex) {
+      document.querySelector(".movie__title").style.background = `green`;
+    } else {
+      document.querySelector(".movie__title").style.background = `red`;
+    }
+  };
+});
+
+button.addEventListener("click", () => {
+  generateMovies().then(generateGif);
+});
+
 // generateGif function needs to be called AFTER generateMovies
-generateMovies().then(generateGif);

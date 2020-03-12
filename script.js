@@ -53,7 +53,30 @@ async function generateMovies() {
       alert("Something's gone wrong, please try again");
     }
   }
-  console.log(movieArray);
+  document.querySelector(
+    ".board__figure--one"
+  ).style.backgroundImage = `url(${movieArray[0].img})`;
+  document.querySelector(
+    ".board__figure--two"
+  ).style.backgroundImage = `url(${movieArray[1].img})`;
+  document.querySelector(
+    ".board__figure--three"
+  ).style.backgroundImage = `url(${movieArray[2].img})`;
+  document.querySelector(
+    ".board__figure--four"
+  ).style.backgroundImage = `url(${movieArray[3].img})`;
+  document.querySelector(
+    ".board__caption--one"
+  ).textContent = movieArray[0].title.toString();
+  document.querySelector(
+    ".board__caption--two"
+  ).textContent = movieArray[1].title.toString();
+  document.querySelector(
+    ".board__caption--three"
+  ).textContent = movieArray[2].title.toString();
+  document.querySelector(
+    ".board__caption--four"
+  ).textContent = movieArray[3].title.toString();
 }
 // choose random movie from the array and replace white spaces in the title with hyphen
 function moviePicker() {

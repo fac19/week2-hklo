@@ -1,7 +1,7 @@
 :root {
     --basecolor: hsl(0, 0%, 100%);
     --accentcolor: hsl(288, 100%, 85%);
-    --opaquebackground: hsla(0, 0%, 100%, .5);
+    --opaquebackground: hsla(0, 0%, 100%, .8);
     --logo: hsl(175, 71%, 41%); 
 }
 * {
@@ -48,8 +48,8 @@ body {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 2rem;
-    grid-row-gap: 2rem;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
     grid-template-areas: 
     "one two"
     "three four";
@@ -57,11 +57,9 @@ body {
 }
 
 .fig {
-	-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     margin: 0;
-    height: 100%;
-    width: 50%;
+    width: 70%;
     justify-content: center;
 }
 
@@ -75,30 +73,30 @@ body {
 
 .board__figure--one {
     grid-area: one;
-    background: url("https://images.unsplash.com/photo-1557166984-b00337652c94?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80") 
-    no-repeat center -6rem;
-    object-fit: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .board__figure--two {
     grid-area: two;
-    background: url("https://images.unsplash.com/photo-1557166984-b00337652c94?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80") 
-    no-repeat center;
-    object-fit: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .board__figure--three {
     grid-area: three;
-    background: url("https://images.unsplash.com/photo-1557166984-b00337652c94?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80") 
-    no-repeat center;
-    object-fit: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .board__figure--four {
     grid-area: four;
-    background: url("https://images.unsplash.com/photo-1557166984-b00337652c94?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80") 
-    no-repeat center;    
-    object-fit: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .movie {
@@ -130,4 +128,13 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom:1rem;
+}
+
+@media only screen and (orientation: landscape) {
+    .board {
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: 
+        "one two three four";
+    }
 }

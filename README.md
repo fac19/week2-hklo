@@ -22,17 +22,6 @@ https://fac19.github.io/week2-hklo/
 - [Tom](http://github.com/tacotoemeck)
 - [James](http://github.com/jamesj-0)
 
-## Set-up Instructions
-- Generate personal API keys from The Movie DB API and the GIPHY API
-- Create a config.js file
-- Store your API keys in the following format:
-```
-var config = {
-  movieDB_key : '123456',
-  giphy_key : '56789'
-}
-```
-
 ## User Journey
 1. Page loads a random selection of 4 movies with titles and images
 2. User has to select the correct movie that the GIF below the movie selection is related to

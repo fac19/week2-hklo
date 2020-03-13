@@ -4,7 +4,6 @@
   --opaquebackground: hsla(0, 0%, 100%, 0.8);
   --logo: hsl(0, 0%, 0%);
   --shadow: hsla(0, 0%, 0%, 0.5);
-  --box-shadow: .4rem .3rem .9rem rgba(0, 0, 0, 0.3);
 }
 
 /* 
@@ -31,26 +30,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  align-self: center;
+  justify-content: space-between;
+  margin: .5rem;
+  width: 60%;
 }
 
 .header__title {
   font-family: 'PT Sans', sans-serif;
   text-transform: uppercase;
-  margin: 0;
   color: var(--logo);
+  margin: 0em;
+  margin-bottom: .5rem;
+  text-align: center;
 }
 
 .header__text {
+  text-align: center;
   margin: 0;
-  padding: .5rem;
-  border-radius: .3rem;
-  text-align: center ;
-  font-size: .9rem;
-  font-weight: bold;
-  background-color: var(--accentcolor);
-  opacity: .75;
-  box-shadow: var(--box-shadow);
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 1rem;
 }
 
 .main {
@@ -74,6 +79,7 @@ body {
     "three four";
   justify-items: center;
 }
+
 .fig {
   display: flex;
   margin: 0;
@@ -84,6 +90,7 @@ body {
   background-position: center;
   cursor: pointer;
 }
+
 .board__caption {
   align-self: flex-end;
   margin-bottom: -1.2rem;
@@ -109,13 +116,6 @@ body {
   grid-area: four;
 }
 
-.movie {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0rem;
-  /* padding-top: 1rem; */
-}
 
 .movie__title {
   position: relative;
@@ -131,7 +131,6 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 .movie__title__overlay{
@@ -150,13 +149,12 @@ body {
 
 .movie__button {
   margin-top: 1rem;
-  box-shadow: var(--box-shadow);
+  box-shadow: .4rem .3rem .9rem rgba(0, 0, 0, 0.3);
   background-color: var(--accentcolor);
   padding: 1rem 2rem;
   border: 0;
   text-transform: uppercase;
   border-radius: .2rem;
-  font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
 }
@@ -175,9 +173,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas: 
     "one two three four";
-  }
-  .movie {
-      padding-top: 3rem;
   }
   .movie__title {
     height: 10rem;

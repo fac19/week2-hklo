@@ -103,7 +103,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 0rem;
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
 }
 
 .movie__title {
@@ -127,8 +127,8 @@ body {
   position: absolute;
   z-index: -1;
   height: 3rem;
-  width: 100%;
-  border-radius: 50% 50%;
+  width: 9rem;
+  border-radius: .2rem;
 }
 
 .movie__title--text{
@@ -175,5 +175,6 @@ body {
 @media only screen and (min-width: 900px) {
   .board__caption {
     padding: 1.5rem;
+    margin-bottom: -.2rem;
   }
 }

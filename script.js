@@ -32,6 +32,7 @@ gifText.textContent = "";
 
 gifOverlay.style.display ="none";
 
+// receives paramentres to control the search range of movies and gifs
 function generateRandomNumber(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -92,13 +93,15 @@ async function generateMovies() {
   boardCapFour.textContent = movieArray[3].title.toString();
 }
 
-// choose random movie from the array and replace white spaces in the title with hyphen
+// choose random movie from the movie object
 function gifURLgenerator() {
   let randomIndex = generateRandomNumber(3, 0);
   let movieTitle = movieArray[randomIndex].title;
 
   answerIndex = randomIndex;
+//   searches punctuation in the movie titles (except hyphens) and replaces them with space
   movieTitle = movieTitle.replace(/[.,\/#!$%\^&\*;:{}=\_`~(),\s ]/g, " ");
+//   searches for spaces and replaces them with hyphen
   movieTitle = movieTitle.replace(/ /g, "-").toLowerCase();
 
   // generate request URL
@@ -120,21 +123,24 @@ async function generateGif() {
     // catches errors both in fetch and response.json
     alert("Something's gone wrong, please try again");
   }
+
   document.querySelector(
     ".movie__title"
   ).style.backgroundImage = `url(${gifURL})`;
 }
 
+// game logic: checks if answer selected matches movie
 figs.forEach(fig => {
   fig.onclick = function() {
-    console.log(answerIndex);
     if (fig.dataset.index == answerIndex) {
+        // correct 
       gifOverlay.style.display = "block";
       gifOverlay.style.backgroundColor = "hsl(129, 100%, 40%)";
       gifOverlay.style.opacity = "0.8";
       document.querySelector(".movie__title--text").textContent = "Correct!";
 
     } else {
+        // wrong
       gifOverlay.style.display = "block";
       gifOverlay.style.backgroundColor = "hsl(13, 100%, 40%)";
       gifOverlay.style.opacity = "0.8";
@@ -149,6 +155,6 @@ button.addEventListener("click", () => {
   generateMovies().then(generateGif);
 });
 
-// call the functions as page opens for first time
+// call the functions as page opens
 generateMovies().then(generateGif);
 

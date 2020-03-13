@@ -28,20 +28,34 @@ body {
 
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  align-self: center;
   justify-content: space-between;
+  margin: .5rem;
+  width: 60%;
 }
 
 .header__title {
   font-family: "PT Sans", sans-serif;
   text-transform: uppercase;
-  margin: 1rem 1rem 1rem 2rem;
   color: var(--logo);
+  margin: 0em;
+  margin-bottom: .5rem;
+  text-align: center;
 }
 
 .header__text {
-  margin: 1rem 1rem 1rem 2rem;
-  text-align: right;
+  text-align: center;
+  margin: 0;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 1rem;
 }
 
 .main {
@@ -65,6 +79,7 @@ body {
     "three four";
   justify-items: center;
 }
+
 .fig {
   display: flex;
   margin: 0;
@@ -73,13 +88,16 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
+
 .board__caption {
   align-self: flex-end;
   margin-bottom: -1.2rem;
   background-color: var(--opaquebackground);
   padding: 0.5rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .board__figure--one {
@@ -98,13 +116,6 @@ body {
   grid-area: four;
 }
 
-.movie {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0rem;
-  /* padding-top: 1rem; */
-}
 
 .movie__title {
   position: relative;
@@ -143,9 +154,10 @@ body {
   padding: 1rem 2rem;
   border: 0;
   text-transform: uppercase;
-  border-radius: 0.2rem;
-  font-weight: bold;
+  border-radius: .2rem;
+
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .footer {
@@ -161,9 +173,6 @@ body {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas: "one two three four";
-  }
-  .movie {
-      padding-top: 3rem;
   }
   .movie__title {
     height: 10rem;

@@ -6,13 +6,13 @@
     <title>Movie Mashup</title>
     <link rel="stylesheet" media="screen" href="styles.css" />
     <link rel="icon" type="image/png" href="image.png">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|PT+Sans:400,700|Quicksand:400,500,600|Work+Sans:400,500,600&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="header">
       <h1 class="header__title">Movie Mashup</h1>
       <p class="header__text">
-        instructions on how to click the images and other stuff that we might
-        want to include
+        Select one of the movie titles which best matches the GIF!
       </p>
     </header>
     <main class="main">
@@ -31,8 +31,11 @@
         </figure>
       </section>
       <section class="movie">
-        <div class="movie__title"></div>
-        <button class="movie__button" type="button">I want more!</button>
+        <div class="movie__title">
+          <div class="movie__title__overlay"></div>
+          <p class="movie__title--text"></p>
+        </div>
+        <button class="movie__button" type="button">Lets Play!</button>
       </section>
     </main>
 

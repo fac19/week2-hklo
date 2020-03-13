@@ -36,8 +36,8 @@ var config = {
 ## User Journey
 1. Page loads a random selection of 4 movies with titles and images
 2. User has to select the correct movie that the GIF below the movie selection is related to
-3. If the user clicks the correct movie, the GIF has a green filter. If the user clicks the incorrect movie, the GIF has a red filter. They have the opportunity to click through the other movies until they get the correct answer.
-4. The user clicks the "I want more!" button to refresh the randomised selection of movies and play again
+3. If the user clicks the correct movie, the GIF has a green filter that displays the text "correct". If the user clicks the incorrect movie, the GIF has a red filter that displays the text "incorrect". They have the opportunity to click through the other movies until they get the correct answer.
+4. The user clicks the "Let's Play!" button to refresh the randomised selection of movies and play again
 
 ## User Stories
 

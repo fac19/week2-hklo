@@ -4,6 +4,7 @@
   --opaquebackground: hsla(0, 0%, 100%, 0.8);
   --logo: hsl(175, 71%, 41%);
   --shadow: hsla(0, 0%, 0%, 0.5);
+  --box-shadow: .4rem .3rem .9rem rgba(0, 0, 0, 0.3);
 }
 
 /* 
@@ -28,20 +29,28 @@ body {
 
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .header__title {
   font-family: 'PT Sans', sans-serif;
   text-transform: uppercase;
-  margin: 1rem 1rem 1rem 2rem;
+  margin: 0;
   color: var(--logo);
 }
 
 .header__text {
-  margin: 1rem 1rem 1rem 2rem;
-  text-align: right;
+  margin: 0;
+  padding: .5rem;
+  border-radius: .3rem;
+  text-align: center ;
+  font-size: .9rem;
+  font-weight: bold;
+  background-color: var(--accentcolor);
+  opacity: .75;
+  box-shadow: var(--box-shadow);
 }
 
 .main {
@@ -139,7 +148,7 @@ body {
 
 .movie__button {
   margin-top: 1rem;
-  box-shadow: .4rem .3rem .9rem rgba(0, 0, 0, 0.3);
+  box-shadow: var(--box-shadow);
   background-color: var(--accentcolor);
   padding: 1rem 2rem;
   border: 0;
@@ -148,7 +157,6 @@ body {
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-
 }
 
 .footer{

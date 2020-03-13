@@ -3,6 +3,8 @@
 const figs = document.querySelectorAll(".fig");
 const boardCaption = document.querySelectorAll(".board__caption");
 const button = document.querySelector(".movie__button");
+const gifText = document.querySelector(".movie__title--text");
+const gifOverlay = document.querySelector(".movie__title__overlay");
 
 // API URL's
 let movieDB_URL = "https://api.themoviedb.org/3/movie/";
@@ -45,6 +47,8 @@ async function generateMovies() {
     let requestURL = `${movieDB_URL}${movieId}${movieDB_key}`;
     // use try to catch API call errors
     try {
+      // show loader
+      showLoader();
       // fetch movie using generated url
       let response = await fetch(requestURL);
       let movie = await response.json();
@@ -70,6 +74,8 @@ async function generateMovies() {
       alert("Something's gone wrong, please try again");
     }
   }
+  // remove loader
+  removeLoader();
   // load an image to each movie element
   createMovieElements(movieArray);
   // load a title for each movie
@@ -78,6 +84,7 @@ async function generateMovies() {
 
 // create movie elements function
 function createMovieElements(arr) {
+  showLoader();
   figs.forEach((fig, i) => {
     fig.style.backgroundImage = `url(${arr[i].img}`;
   });
@@ -85,9 +92,8 @@ function createMovieElements(arr) {
 
 // create titiles function
 function createTitleElements(arr) {
-  boardCaption.forEach((fig, i) => {
-    console.log(fig);
-    fig.textContent = `${arr[i].title.toString()})`;
+  boardCaption.forEach((cap, i) => {
+    cap.textContent = `${arr[i].title.toString()})`;
   });
 }
 
@@ -111,6 +117,8 @@ async function generateGif() {
   let requestURL = gifURLgenerator();
   let gifURL;
   try {
+    // show loader
+    gifLoader();
     // fetch movie using generated url
     let response = await fetch(requestURL);
     let gif = await response.json();
@@ -140,9 +148,29 @@ figs.forEach(fig => {
   };
 });
 
+function showLoader(target) {
+  figs.forEach(fig => {
+    fig.classList.add("loader");
+  });
+}
+
+function removeLoader() {
+  figs.forEach(fig => {
+    fig.classList.remove("loader");
+  });
+}
+
+function gifLoader() {
+  document.querySelector(
+    ".movie__title"
+  ).style.backgroundImage = `url("/img/loader.gif")`;
+}
+
 // call functions with a click on button
 button.addEventListener("click", () => {
   // generateGif function needs to be called AFTER generateMovies
+
+  showLoader();
   generateMovies().then(generateGif);
 });
 

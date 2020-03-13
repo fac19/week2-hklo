@@ -6,36 +6,36 @@
     <title>Movie Mashup</title>
     <link rel="stylesheet" media="screen" href="styles.css" />
     <link rel="icon" type="image/png" href="image.png">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|PT+Sans:400,700|Quicksand:400,500,600|Work+Sans:400,500,600&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="header">
       <h1 class="header__title">Movie Mashup</h1>
       <p class="header__text">
-        instructions on how to click the images and other stuff that we might
-        want to include
+        Select one of the movie titles which best matches the GIF!
       </p>
     </header>
     <main class="main">
       <section class="board">
         <figure data-index="0" class="fig board__figure--one">
-          <figcaption class="board__caption board__caption--one">...loading...</figcaption>
+          <button class="board__caption board__caption--one"></button>
         </figure>
         <figure data-index="1" class="fig board__figure--two">
-          <figcaption class="board__caption board__caption--two">
-          ...loading...</figcaption>
+          <button class="board__caption board__caption--two"></button>
         </figure>
         <figure data-index="2" class="fig board__figure--three">
-          <figcaption class="board__caption board__caption--three">
-            ...loading...</figcaption>
+          <button class="board__caption board__caption--three"></button>
         </figure>
         <figure data-index="3" class="fig board__figure--four">
-          <figcaption class="board__caption board__caption--four">
-            ...loading...</figcaption>
+          <button class="board__caption board__caption--four"></button>
         </figure>
       </section>
       <section class="movie">
-        <div class="movie__title"></div>
-        <button class="movie__button" type="button">I want more!</button>
+        <div class="movie__title">
+          <div class="movie__title__overlay"></div>
+          <p class="movie__title--text"></p>
+        </div>
+        <button class="movie__button" type="button">Lets Play!</button>
       </section>
     </main>
 

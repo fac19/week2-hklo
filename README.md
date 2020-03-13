@@ -1,6 +1,8 @@
 # HKLO API mash-up game
 
 ## INTRO
+Movie mash-up is a game where the user is given a randomised GIF and has to select the correct movie out of 4 randomised choices that are displayed on the page.
+
 This website was built as a part of [Founders and Coders](http://www.foundersandcoders.com) week 2 group project.
 
 ### FAC19
@@ -10,7 +12,7 @@ This website was built as a part of [Founders and Coders](http://www.foundersand
 https://fac19.github.io/week2-hklo/
 
 ## APIs Used
-[The Movie DB](https://www.themoviedb.org/documentation/api)
+[The Movie DB](https://www.themoviedb.org/documentation/api)  
 [GIPHY](https://developers.giphy.com/)
 
 ## Authors

@@ -17,6 +17,10 @@ let giphy_key = "lbwQZXxYMqPh2DpvV8nXbGlqHNm8kJ9h";
 
 let answerIndex;
 
+gifText.textContent = "";
+
+gifOverlay.style.display = "none";
+
 function generateRandomNumber(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -30,6 +34,9 @@ let idArray = [];
 async function generateMovies() {
   movieArray = [];
   idArray = [];
+  gifText.textContent = "";
+  gifOverlay.style.opacity = "0";
+
   // fetch movies until array has 4 objects
   while (movieArray.length < 4) {
     let movieObj = {};
@@ -120,9 +127,15 @@ async function generateGif() {
 figs.forEach(fig => {
   fig.onclick = function() {
     if (fig.dataset.index == answerIndex) {
-      document.querySelector(".movie__title").style.background = `green`;
+      gifOverlay.style.display = "block";
+      gifOverlay.style.backgroundColor = "hsl(129, 100%, 40%)";
+      gifOverlay.style.opacity = "0.8";
+      document.querySelector(".movie__title--text").textContent = "Correct!";
     } else {
-      document.querySelector(".movie__title").style.background = `red`;
+      gifOverlay.style.display = "block";
+      gifOverlay.style.backgroundColor = "hsl(13, 100%, 40%)";
+      gifOverlay.style.opacity = "0.8";
+      document.querySelector(".movie__title--text").textContent = "Incorrect!";
     }
   };
 });

@@ -5,6 +5,12 @@
   --logo: hsl(175, 71%, 41%);
   --shadow: hsla(0, 0%, 0%, 0.5);
 }
+
+/* 
+font-family: 'Work Sans', sans-serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'PT Sans Narrow', sans-serif; */
+
 * {
   box-sizing: border-box;
 }
@@ -13,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: 'PT Sans Narrow', sans-serif;
   height: 100vh;
   width: 100vw;
   max-width: 2000px;
@@ -26,13 +33,14 @@ body {
 }
 
 .header__title {
+  font-family: 'PT Sans', sans-serif;
   text-transform: uppercase;
   margin: 1rem 1rem 1rem 2rem;
   color: var(--logo);
 }
 
 .header__text {
-  margin: 1rem 2rem 1rem 1rem;
+  margin: 1rem 1rem 1rem 2rem;
   text-align: right;
 }
 
@@ -42,7 +50,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .board {
@@ -98,27 +106,53 @@ body {
 }
 
 .movie__title {
-  margin: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
   height: 8rem;
   width: 12rem;
+  text-align: center;
+  line-height: 8rem;
+  z-index: -2;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
+}
+
+.movie__title__overlay{
+  position: absolute;
+  z-index: -1;
+  height: 3rem;
+  width: 8rem;
+}
+
+.movie__title--text{
+  font-family: 'PT Sans', sans-serif;
+  font-size: 2rem;
+  color: hsla(0, 0%, 100%);
 }
 
 .movie__button {
-  -webkit-box-shadow: 0 0 10px var(--shadow);
+  margin-top: 1rem;
+  box-shadow: .4rem .3rem .9rem rgba(0, 0, 0, 0.3);
   background-color: var(--accentcolor);
-  padding: .5rem;
+  padding: 1rem 2rem;
   border: 0;
-  border-radius: 5px;
+  text-transform: uppercase;
+  border-radius: .2rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
-.footer {
-  font-size: 0.8rem;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
+
+.footer{
+    font-size: 0.8rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:1rem;
 }
 
 @media only screen and (orientation: landscape) {

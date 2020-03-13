@@ -73,6 +73,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 .board__caption {
   align-self: flex-end;
@@ -80,6 +81,7 @@ body {
   background-color: var(--opaquebackground);
   padding: 0.5rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .board__figure--one {
@@ -145,6 +147,8 @@ body {
   border-radius: .2rem;
   font-weight: bold;
   font-size: 1rem;
+  cursor: pointer;
+
 }
 
 .footer{

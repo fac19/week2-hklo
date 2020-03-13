@@ -1,19 +1,10 @@
 // global variables
 
 const figs = document.querySelectorAll(".fig");
+const boardCaption = document.querySelectorAll(".board__caption");
 const button = document.querySelector(".movie__button");
-const figOne = document.querySelector(".board__figure--one");
-const figTwo = document.querySelector(".board__figure--two");
-const figThree = document.querySelector(".board__figure--three");
-const figFour = document.querySelector(".board__figure--four");
-const boardCapOne = document.querySelector(".board__caption--one");
-const boardCapTwo = document.querySelector(".board__caption--two");
-const boardCapThree = document.querySelector(".board__caption--three");
-const boardCapFour = document.querySelector(".board__caption--four");
 const gifText = document.querySelector(".movie__title--text");
 const gifOverlay = document.querySelector(".movie__title__overlay");
-
-
 
 // API URL's
 let movieDB_URL = "https://api.themoviedb.org/3/movie/";
@@ -30,8 +21,9 @@ let answerIndex;
 
 gifText.textContent = "";
 
-gifOverlay.style.display ="none";
+gifOverlay.style.display = "none";
 
+// receives paramentres to control the search range of movies and gifs
 function generateRandomNumber(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -48,7 +40,6 @@ async function generateMovies() {
   gifText.textContent = "";
   gifOverlay.style.opacity = "0";
 
-
   // fetch movies until array has 4 objects
   while (movieArray.length < 4) {
     let movieObj = {};
@@ -57,10 +48,12 @@ async function generateMovies() {
     let requestURL = `${movieDB_URL}${movieId}${movieDB_key}`;
     // use try to catch API call errors
     try {
+      // show loader
+      showLoader();
       // fetch movie using generated url
       let response = await fetch(requestURL);
       let movie = await response.json();
-      
+
       if (
         // check if movie exists in the database ( checking response status code )
         movie.status_code !== 34 &&
@@ -82,23 +75,38 @@ async function generateMovies() {
       alert("Something's gone wrong, please try again");
     }
   }
-  figOne.style.backgroundImage = `url(${movieArray[0].img})`;
-  figTwo.style.backgroundImage = `url(${movieArray[1].img})`;
-  figThree.style.backgroundImage = `url(${movieArray[2].img})`;
-  figFour.style.backgroundImage = `url(${movieArray[3].img})`;
-  boardCapOne.textContent = movieArray[0].title.toString();
-  boardCapTwo.textContent = movieArray[1].title.toString();
-  boardCapThree.textContent = movieArray[2].title.toString();
-  boardCapFour.textContent = movieArray[3].title.toString();
+  // remove loader
+  removeLoader();
+  // load an image to each movie element
+  createMovieElements(movieArray);
+  // load a title for each movie
+  createTitleElements(movieArray);
 }
 
-// choose random movie from the array and replace white spaces in the title with hyphen
+// create movie elements function
+function createMovieElements(arr) {
+  showLoader();
+  figs.forEach((fig, i) => {
+    fig.style.backgroundImage = `url(${arr[i].img}`;
+  });
+}
+
+// create titiles function
+function createTitleElements(arr) {
+  boardCaption.forEach((cap, i) => {
+    cap.textContent = `${arr[i].title.toString()})`;
+  });
+}
+
+// choose random movie from the movie object
 function gifURLgenerator() {
   let randomIndex = generateRandomNumber(3, 0);
   let movieTitle = movieArray[randomIndex].title;
 
   answerIndex = randomIndex;
+//   searches punctuation in the movie titles (except hyphens) and replaces them with space
   movieTitle = movieTitle.replace(/[.,\/#!$%\^&\*;:{}=\_`~(),\s ]/g, " ");
+//   searches for spaces and replaces them with hyphen
   movieTitle = movieTitle.replace(/ /g, "-").toLowerCase();
 
   // generate request URL
@@ -112,6 +120,8 @@ async function generateGif() {
   let requestURL = gifURLgenerator();
   let gifURL;
   try {
+    // show loader
+    gifLoader();
     // fetch movie using generated url
     let response = await fetch(requestURL);
     let gif = await response.json();
@@ -120,21 +130,23 @@ async function generateGif() {
     // catches errors both in fetch and response.json
     alert("Something's gone wrong, please try again");
   }
+
   document.querySelector(
     ".movie__title"
   ).style.backgroundImage = `url(${gifURL})`;
 }
 
+// game logic: checks if answer selected matches movie
 figs.forEach(fig => {
   fig.onclick = function() {
-    console.log(answerIndex);
     if (fig.dataset.index == answerIndex) {
+        // correct 
       gifOverlay.style.display = "block";
       gifOverlay.style.backgroundColor = "hsl(129, 100%, 40%)";
       gifOverlay.style.opacity = "0.8";
       document.querySelector(".movie__title--text").textContent = "Correct!";
-
     } else {
+        // wrong
       gifOverlay.style.display = "block";
       gifOverlay.style.backgroundColor = "hsl(13, 100%, 40%)";
       gifOverlay.style.opacity = "0.8";
@@ -143,12 +155,31 @@ figs.forEach(fig => {
   };
 });
 
+function showLoader(target) {
+  figs.forEach(fig => {
+    fig.classList.add("loader");
+  });
+}
+
+function removeLoader() {
+  figs.forEach(fig => {
+    fig.classList.remove("loader");
+  });
+}
+
+function gifLoader() {
+  document.querySelector(
+    ".movie__title"
+  ).style.backgroundImage = `url("/img/loader.gif")`;
+}
+
 // call functions with a click on button
 button.addEventListener("click", () => {
-    // generateGif function needs to be called AFTER generateMovies
+  // generateGif function needs to be called AFTER generateMovies
+
+  showLoader();
   generateMovies().then(generateGif);
 });
 
-// call the functions as page opens for first time
+// call the functions as page opens
 generateMovies().then(generateGif);
-

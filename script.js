@@ -60,7 +60,7 @@ async function generateMovies() {
       // fetch movie using generated url
       let response = await fetch(requestURL);
       let movie = await response.json();
-
+      
       if (
         // check if movie exists in the database ( checking response status code )
         movie.status_code !== 34 &&
@@ -130,21 +130,25 @@ figs.forEach(fig => {
     console.log(answerIndex);
     if (fig.dataset.index == answerIndex) {
       gifOverlay.style.display = "block";
-      gifOverlay.style.backgroundColor = "hsl(129, 100%, 70%)";
-      gifOverlay.style.opacity = "0.5";
+      gifOverlay.style.backgroundColor = "hsl(129, 100%, 40%)";
+      gifOverlay.style.opacity = "0.8";
       document.querySelector(".movie__title--text").textContent = "Correct!";
 
     } else {
       gifOverlay.style.display = "block";
-      gifOverlay.style.backgroundColor = "hsl(13, 100%, 70%)";
-      gifOverlay.style.opacity = "0.5";
+      gifOverlay.style.backgroundColor = "hsl(13, 100%, 40%)";
+      gifOverlay.style.opacity = "0.8";
       document.querySelector(".movie__title--text").textContent = "Incorrect!";
     }
   };
 });
 
+// call functions with a click on button
 button.addEventListener("click", () => {
+    // generateGif function needs to be called AFTER generateMovies
   generateMovies().then(generateGif);
 });
 
-// generateGif function needs to be called AFTER generateMovies
+// call the functions as page opens for first time
+generateMovies().then(generateGif);
+

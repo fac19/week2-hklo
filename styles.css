@@ -32,8 +32,7 @@ body {
   align-items: center;
   align-self: center;
   justify-content: space-between;
-  margin: .5rem;
-  width: 60%;
+  margin: 1rem;
 }
 
 .header__title {
@@ -41,7 +40,7 @@ body {
   text-transform: uppercase;
   color: var(--logo);
   margin: 0em;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 
@@ -55,7 +54,6 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 0;
-  margin: 1rem;
 }
 
 .main {
@@ -64,7 +62,6 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: 1rem;
 }
 
 .board {
@@ -78,6 +75,7 @@ body {
     "one two"
     "three four";
   justify-items: center;
+  margin: 1rem;
 }
 
 .fig {
@@ -116,7 +114,6 @@ body {
   grid-area: four;
 }
 
-
 .movie__title {
   position: relative;
   display: flex;
@@ -138,7 +135,7 @@ body {
   z-index: -1;
   height: 3rem;
   width: 9rem;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
 }
 
 .movie__title--text {
@@ -151,10 +148,10 @@ body {
   margin-top: 1rem;
   box-shadow: 0.4rem 0.3rem 0.9rem rgba(0, 0, 0, 0.3);
   background-color: var(--accentcolor);
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   border: 0;
   text-transform: uppercase;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
 
   font-size: 1rem;
   cursor: pointer;
@@ -163,9 +160,19 @@ body {
 .footer {
   font-size: 0.8rem;
   text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+/* loader */
+
+.loader {
+  z-index: 3;
+  background: url("/img/loader.gif");
+  width: 100%;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media only screen and (orientation: landscape) {
@@ -182,19 +189,12 @@ body {
 @media only screen and (min-width: 900px) {
   .board__caption {
     padding: 1.5rem;
-    margin-bottom: -.2rem;
+    margin-bottom: -0.2rem;
   }
-}
-
-/* loader */
-
-.loader {
-  z-index: 3;
-  background: url("/img/loader.gif");
-
-  width: 100%;
-  justify-content: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  .header {
+    max-width: 60%;
+  }
+  .movie__button {
+    padding: 1rem 2rem;
+  }
 }

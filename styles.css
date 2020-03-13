@@ -2,7 +2,7 @@
   --basecolor: hsl(0, 0%, 100%);
   --accentcolor: hsl(288, 100%, 85%);
   --opaquebackground: hsla(0, 0%, 100%, 0.8);
-  --logo: hsl(175, 71%, 41%);
+  --logo: hsl(0, 0%, 0%);
   --shadow: hsla(0, 0%, 0%, 0.5);
 }
 
@@ -103,6 +103,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 0rem;
+  /* padding-top: 1rem; */
 }
 
 .movie__title {
@@ -126,7 +127,8 @@ body {
   position: absolute;
   z-index: -1;
   height: 3rem;
-  width: 8rem;
+  width: 9rem;
+  border-radius: .2rem;
 }
 
 .movie__title--text{
@@ -162,6 +164,9 @@ body {
     grid-template-areas: 
     "one two three four";
   }
+  .movie {
+      padding-top: 3rem;
+  }
   .movie__title {
     height: 10rem;
     width: 15rem;
@@ -170,5 +175,6 @@ body {
 @media only screen and (min-width: 900px) {
   .board__caption {
     padding: 1.5rem;
+    margin-bottom: -.2rem;
   }
 }

@@ -1,15 +1,8 @@
 // global variables
 
 const figs = document.querySelectorAll(".fig");
+const boardCaption = document.querySelectorAll(".board__caption");
 const button = document.querySelector(".movie__button");
-const figOne = document.querySelector(".board__figure--one");
-const figTwo = document.querySelector(".board__figure--two");
-const figThree = document.querySelector(".board__figure--three");
-const figFour = document.querySelector(".board__figure--four");
-const boardCapOne = document.querySelector(".board__caption--one");
-const boardCapTwo = document.querySelector(".board__caption--two");
-const boardCapThree = document.querySelector(".board__caption--three");
-const boardCapFour = document.querySelector(".board__caption--four");
 
 // API URL's
 let movieDB_URL = "https://api.themoviedb.org/3/movie/";
@@ -48,7 +41,7 @@ async function generateMovies() {
       // fetch movie using generated url
       let response = await fetch(requestURL);
       let movie = await response.json();
-      
+
       if (
         // check if movie exists in the database ( checking response status code )
         movie.status_code !== 34 &&
@@ -70,14 +63,25 @@ async function generateMovies() {
       alert("Something's gone wrong, please try again");
     }
   }
-  figOne.style.backgroundImage = `url(${movieArray[0].img})`;
-  figTwo.style.backgroundImage = `url(${movieArray[1].img})`;
-  figThree.style.backgroundImage = `url(${movieArray[2].img})`;
-  figFour.style.backgroundImage = `url(${movieArray[3].img})`;
-  boardCapOne.textContent = movieArray[0].title.toString();
-  boardCapTwo.textContent = movieArray[1].title.toString();
-  boardCapThree.textContent = movieArray[2].title.toString();
-  boardCapFour.textContent = movieArray[3].title.toString();
+  // load an image to each movie element
+  createMovieElements(movieArray);
+  // load a title for each movie
+  createTitleElements(movieArray);
+}
+
+// create movie elements function
+function createMovieElements(arr) {
+  figs.forEach((fig, i) => {
+    fig.style.backgroundImage = `url(${arr[i].img}`;
+  });
+}
+
+// create titiles function
+function createTitleElements(arr) {
+  boardCaption.forEach((fig, i) => {
+    console.log(fig);
+    fig.textContent = `${arr[i].title.toString()})`;
+  });
 }
 
 // choose random movie from the array and replace white spaces in the title with hyphen
@@ -115,7 +119,6 @@ async function generateGif() {
 
 figs.forEach(fig => {
   fig.onclick = function() {
-    console.log(answerIndex);
     if (fig.dataset.index == answerIndex) {
       document.querySelector(".movie__title").style.background = `green`;
     } else {
@@ -126,10 +129,9 @@ figs.forEach(fig => {
 
 // call functions with a click on button
 button.addEventListener("click", () => {
-    // generateGif function needs to be called AFTER generateMovies
+  // generateGif function needs to be called AFTER generateMovies
   generateMovies().then(generateGif);
 });
 
 // call the functions as page opens for first time
 generateMovies().then(generateGif);
-

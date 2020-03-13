@@ -19,7 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: "PT Sans Narrow", sans-serif;
   height: 100vh;
   width: 100vw;
   max-width: 2000px;
@@ -33,7 +33,7 @@ body {
 }
 
 .header__title {
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
   text-transform: uppercase;
   margin: 1rem 1rem 1rem 2rem;
   color: var(--logo);
@@ -120,10 +120,9 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
-.movie__title__overlay{
+.movie__title__overlay {
   position: absolute;
   z-index: -1;
   height: 3rem;
@@ -131,38 +130,37 @@ body {
   border-radius: .2rem;
 }
 
-.movie__title--text{
-  font-family: 'PT Sans', sans-serif;
+.movie__title--text {
+  font-family: "PT Sans", sans-serif;
   font-size: 2rem;
   color: hsla(0, 0%, 100%);
 }
 
 .movie__button {
   margin-top: 1rem;
-  box-shadow: .4rem .3rem .9rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0.4rem 0.3rem 0.9rem rgba(0, 0, 0, 0.3);
   background-color: var(--accentcolor);
   padding: 1rem 2rem;
   border: 0;
   text-transform: uppercase;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   font-weight: bold;
   font-size: 1rem;
 }
 
-.footer{
-    font-size: 0.8rem;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-bottom:1rem;
+.footer {
+  font-size: 0.8rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (orientation: landscape) {
   .board {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: 
-    "one two three four";
+    grid-template-areas: "one two three four";
   }
   .movie {
       padding-top: 3rem;
@@ -177,4 +175,17 @@ body {
     padding: 1.5rem;
     margin-bottom: -.2rem;
   }
+}
+
+/* loader */
+
+.loader {
+  z-index: 3;
+  background: url("/img/loader.gif");
+
+  width: 100%;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }

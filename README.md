@@ -4,6 +4,10 @@ At [Founders and Coders](https://www.foundersandcoders.com/about/) coding bootca
 
 __Week 2 topic__: HTTP (API, fetch, promises).
 
+See [week 2 schedule](https://founders-and-coders.gitbook.io/coursebook/week-2/schedule).
+
+---
+
 # HKLO API mash-up game
 
 ## INTRO

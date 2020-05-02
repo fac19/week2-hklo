@@ -2,7 +2,7 @@
 
 At [Founders and Coders](https://www.foundersandcoders.com/about/) coding bootcamp we are tasked every week with a different project. A MVP is built in 1.5 days by 4 developers that follow the Agile methodology.
 
-__Week 2 topic__: API, HTTP, fetch, async.
+__Week 2 topic__: HTTP (API, fetch, promises).
 
 # HKLO API mash-up game
 

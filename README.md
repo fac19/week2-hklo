@@ -1,9 +1,19 @@
+# FAC19 week 2 project
+
+At [Founders and Coders](https://www.foundersandcoders.com/about/) coding bootcamp we are tasked every week with a different project. A MVP is built in 1.5 days by 4 developers that follow the Agile methodology. This website is our week 2 group project.
+
+__Week 2 topic__: HTTP (API, fetch, promises).
+
+See [week 2 schedule](https://founders-and-coders.gitbook.io/coursebook/week-2/schedule).
+
+---
+
 # HKLO API mash-up game
 
 ## INTRO
 Movie mash-up is a game where the user is given a randomised GIF and has to select the correct movie out of 4 randomised choices that are displayed on the page.
 
-This website was built as a part of [Founders and Coders](http://www.foundersandcoders.com) week 2 group project.
+![screenshot](screenshot.png)
 
 ### FAC19
 
